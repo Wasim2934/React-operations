@@ -289,7 +289,7 @@ const App = () => {
         {isCartOpen ? (
           <div className="w-screen px-10">
           <Cart cartItems={cartItems} />
-          </div>
+          </div> 
         ) : (
           products.map((items) => {
             return <UserCard key={items.id} product={items} setCartItems={setCartItems} />;
