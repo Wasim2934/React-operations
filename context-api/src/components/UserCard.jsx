@@ -3,7 +3,7 @@ import { MyStore } from "../context/MyStore";
 
 const UserCard = ({ product, isInCart }) => {
 
-  const {setCartItems, incrementQuantity} = useContext(MyStore)
+  const {setCartItems, incrementQuantity, decrementQuantity} = useContext(MyStore)
   
   const handleAddToCart = () => {
     setCartItems((prev) => [...prev, {...product, quantity: 1}])
@@ -54,10 +54,10 @@ const UserCard = ({ product, isInCart }) => {
 
         {/* Button */}
 
-        {isInCart ? (
+        {isInCart?.quantity > 0 ? (
           <div className="flex items-center justify-center">
           <button className="flex items-center justify-center gap-5">
-            <span className="border border-gray-400 px-3 py-1 rounded">-</span>
+            <span onClick={() => decrementQuantity(product.id)} className="border border-gray-400 px-3 py-1 rounded">-</span>
             <span className="border border-gray-400 px-3 py-1 rounded">{isInCart.quantity}</span>
             <span onClick={() => incrementQuantity(product.id)} className="border border-gray-400 px-3 py-1 rounded">+</span>
           </button>

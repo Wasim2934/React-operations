@@ -2,9 +2,6 @@ import React, { useState } from "react";
 
 const Cart = ({cartItems}) => {
 
-  console.log(cartItems);
-  
-
   // // Increase quantity
   // const increaseQuantity = (id) => {
   //   setCartItems((items) =>
