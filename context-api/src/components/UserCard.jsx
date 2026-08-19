@@ -1,11 +1,9 @@
 import { useContext } from "react";
 import { MyStore } from "../context/MyStore";
 
-const UserCard = ({ product, setCartItems }) => {   
-
+const UserCard = ({ product, setCartItems, isInCart }) => {
   return (
     <div className="flex flex-col justify-around w-full max-w-sm overflow-hidden rounded-xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl">
-      
       {/* Product Image */}
       <div className="flex h-64 items-center justify-center bg-gray-100 p-5">
         <img
@@ -17,7 +15,6 @@ const UserCard = ({ product, setCartItems }) => {
 
       {/* Product Details */}
       <div className="p-5">
-
         {/* Category */}
         <p className="mb-2 text-sm font-medium capitalize text-blue-600">
           {product.category}
@@ -40,9 +37,7 @@ const UserCard = ({ product, setCartItems }) => {
           </span>
 
           <div className="text-right">
-            <p className="text-yellow-500">
-              ⭐ {product.rating.rate}
-            </p>
+            <p className="text-yellow-500">⭐ {product.rating.rate}</p>
             <p className="text-xs text-gray-400">
               {product.rating.count} reviews
             </p>
@@ -50,10 +45,23 @@ const UserCard = ({ product, setCartItems }) => {
         </div>
 
         {/* Button */}
-        <button onClick={() => setCartItems(prev => [...prev, product])} className="w-full rounded-lg bg-black px-4 py-3 font-medium text-white transition hover:bg-gray-800">
-          Add to Cart
-        </button>
 
+        {isInCart ? (
+          <div className="flex items-center justify-center">
+          <button className="flex items-center justify-center gap-5">
+            <span className="border border-gray-400 px-3 py-1 rounded">-</span>
+            <span className="border border-gray-400 px-3 py-1 rounded">1</span>
+            <span className="border border-gray-400 px-3 py-1 rounded">+</span>
+          </button>
+          </div>
+        ) : (
+          <button
+            onClick={() => setCartItems((prev) => [...prev, product])}
+            className="w-full rounded-lg bg-black px-4 py-3 font-medium text-white transition hover:bg-gray-800"
+          >
+            Add to Cart
+          </button>
+        )}
       </div>
     </div>
   );
