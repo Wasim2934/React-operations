@@ -1,7 +1,15 @@
 import { useContext } from "react";
 import { MyStore } from "../context/MyStore";
 
-const UserCard = ({ product, setCartItems, isInCart }) => {
+const UserCard = ({ product, isInCart }) => {
+
+  const {setCartItems, incrementQuantity} = useContext(MyStore)
+  
+  const handleAddToCart = () => {
+    setCartItems((prev) => [...prev, {...product, quantity: 1}])
+    alert('Product added to cart')
+  }
+
   return (
     <div className="flex flex-col justify-around w-full max-w-sm overflow-hidden rounded-xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl">
       {/* Product Image */}
@@ -50,13 +58,13 @@ const UserCard = ({ product, setCartItems, isInCart }) => {
           <div className="flex items-center justify-center">
           <button className="flex items-center justify-center gap-5">
             <span className="border border-gray-400 px-3 py-1 rounded">-</span>
-            <span className="border border-gray-400 px-3 py-1 rounded">1</span>
-            <span className="border border-gray-400 px-3 py-1 rounded">+</span>
+            <span className="border border-gray-400 px-3 py-1 rounded">{isInCart.quantity}</span>
+            <span onClick={() => incrementQuantity(product.id)} className="border border-gray-400 px-3 py-1 rounded">+</span>
           </button>
           </div>
         ) : (
           <button
-            onClick={() => setCartItems((prev) => [...prev, product])}
+            onClick={handleAddToCart}
             className="w-full rounded-lg bg-black px-4 py-3 font-medium text-white transition hover:bg-gray-800"
           >
             Add to Cart

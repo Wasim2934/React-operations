@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const Cart = ({cartItems}) => {
 
+  console.log(cartItems);
+  
 
   // // Increase quantity
   // const increaseQuantity = (id) => {
@@ -86,7 +88,7 @@ const Cart = ({cartItems}) => {
                       </button>
 
                       <span className="w-8 text-center font-semibold">
-                        1
+                        {item.quantity}
                       </span>
 
                       <button

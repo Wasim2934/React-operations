@@ -13,8 +13,6 @@ const App = () => {
 
   const getStoreData = async () => {
     const res = await axios.get('https://fakestoreapi.com/products')
-    console.log(res.data);
-    
     setProducts(res.data)
   }
 
