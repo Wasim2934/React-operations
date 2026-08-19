@@ -20,7 +20,6 @@ const MyStoreProvider = ({ children }) => {
         .map((val) => {
           return val.id === id ? { ...val, quantity: val.quantity - 1 } : val;
         })
-        .filter((val) => val.quantity > 0);
     });
   };
 
