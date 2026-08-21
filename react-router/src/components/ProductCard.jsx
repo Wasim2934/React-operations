@@ -1,10 +1,22 @@
+import { useContext } from "react";
+import { MyStore } from "../context/Mycontext";
+import { useNavigate } from "react-router";
+
 const ProductCard = ({product}) => {  
+
+  const {setCartItems} = useContext(MyStore)
+  
+  const navigate = useNavigate()
+
+  const handleAddToCart = () => {
+    setCartItems((prev) => [...prev, product] )
+  }
 
   return (
     <div className="w-full min-w-0 overflow-hidden rounded-2xl bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
       
       <div className="flex h-64 items-center justify-center bg-gray-100 p-6">
-        <img
+        <img onClick={() => navigate(`/product/${product.id}`)}
           src={product.image}
           alt={product.title}
           className="h-full w-full object-contain"
@@ -40,7 +52,7 @@ const ProductCard = ({product}) => {
             ${product.price}
           </p>
 
-          <button className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-800">
+          <button onClick={handleAddToCart} className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-800">
             Add to Cart
           </button>
         </div>

@@ -4,9 +4,7 @@ import ProductCard from '../components/ProductCard';
 
 const Home = () => {
 
-  const {products} = useContext(MyStore);
-  console.log(products);
-  
+  const {products} = useContext(MyStore);  
 
   return (
     <div className='mx-auto grid w-full max-w-screen-2xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5'>
