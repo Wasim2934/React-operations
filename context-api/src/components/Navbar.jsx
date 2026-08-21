@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Navbar = ({setIsCartOpen}) => {
   return (
     <div className='flex justify-between p-5 bg-amber-700 text-white rounded'>
