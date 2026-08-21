@@ -13,7 +13,7 @@ const ProductCard = ({product}) => {
   }
 
   return (
-    <div className="w-full min-w-0 overflow-hidden rounded-2xl bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
+    <div className="cursor-pointer w-full min-w-0 overflow-hidden rounded-2xl bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
       
       <div className="flex h-64 items-center justify-center bg-gray-100 p-6">
         <img onClick={() => navigate(`/product/${product.id}`)}
@@ -52,7 +52,7 @@ const ProductCard = ({product}) => {
             ${product.price}
           </p>
 
-          <button onClick={handleAddToCart} className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-800">
+          <button onClick={handleAddToCart} className="rounded-lg bg-black px-4 py-2 text-sm font-medium text-white transition hover:bg-gray-800 cursor-pointer">
             Add to Cart
           </button>
         </div>
